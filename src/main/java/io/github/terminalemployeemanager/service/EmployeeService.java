@@ -29,6 +29,10 @@ public class EmployeeService {
     public int addEmployee(Employee employee){
         return employeeDao.addEmployee(employee);
     }
+    public int deleteEmployee(int id){
+        return employeeDao.deleteEmployee(id);
+    }
+
 
 
 }

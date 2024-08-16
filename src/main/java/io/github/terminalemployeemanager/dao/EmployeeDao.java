@@ -46,6 +46,11 @@ public class EmployeeDao {
                 employee.getRole());
     }
 
+    public int deleteEmployee(int id){
+        String query = "DELETE FROM employees WHERE id = ?";
+        return jdbcTemplate.update(query, id);
+    }
+
     public class EmployeeRowMapper implements RowMapper<Employee> {
         @Override
         public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
