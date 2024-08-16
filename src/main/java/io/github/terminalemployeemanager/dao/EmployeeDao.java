@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Setter
@@ -27,17 +28,24 @@ public class EmployeeDao {
                 new EmployeeRowMapper());
     }
 
-    public Employee findById(int id){
+    public Optional<Employee> findById(int id){
         try{
-            return jdbcTemplate.queryForObject(
+            Employee employee = jdbcTemplate.queryForObject(
                     "SELECT * FROM employees WHERE id = ?",
                     new Object[]{id},
                     new EmployeeRowMapper());
+            return Optional.of(employee);
         }catch (EmptyResultDataAccessException e){
-            return null;
+            return Optional.empty();
         }
-
     }
+
+    public int addEmployee(Employee employee){
+        String query = "INSERT INTO employees(name, role) VALUES(?, ?)";
+        return jdbcTemplate.update(query, employee.getName(),
+                employee.getRole());
+    }
+
     public class EmployeeRowMapper implements RowMapper<Employee> {
         @Override
         public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -48,5 +56,6 @@ public class EmployeeDao {
             return employee;
         }
     }
+
 
 }
