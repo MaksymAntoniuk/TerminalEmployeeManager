@@ -37,13 +37,16 @@ public class EmployeeDao {
             return Optional.of(employee);
         }catch (EmptyResultDataAccessException e){
             return Optional.empty();
+        } catch (Exception e){
+            e.printStackTrace();
+            return Optional.empty();
         }
     }
 
-    public int addEmployee(Employee employee){
+    public int addEmployee(String name, String role){
         String query = "INSERT INTO employees(name, role) VALUES(?, ?)";
-        return jdbcTemplate.update(query, employee.getName(),
-                employee.getRole());
+        Employee employee = new Employee(name, role);
+        return jdbcTemplate.update(query, employee.getName(),employee.getRole());
     }
 
     public int deleteEmployee(int id){
