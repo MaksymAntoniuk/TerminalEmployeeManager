@@ -1,11 +1,11 @@
-package io.github.terminalemployeemanager.Model;
+package io.github.terminalemployeemanager.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "employees_2")
+@Table(name = "employees_jpa")
 @Getter
 @Setter
 public class Employee {
