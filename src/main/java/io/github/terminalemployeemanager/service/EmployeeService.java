@@ -1,7 +1,7 @@
 package io.github.terminalemployeemanager.service;
 
 import io.github.terminalemployeemanager.Model.Employee;
-import io.github.terminalemployeemanager.dao.EmployeeDao;
+import io.github.terminalemployeemanager.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,26 +11,27 @@ import java.util.Optional;
 @Service
 public class EmployeeService {
 
-    private final EmployeeDao employeeDao;
+    private final EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeService(EmployeeDao employeeDao){
-        this.employeeDao = employeeDao;
+    public EmployeeService(EmployeeRepository employeeRepository){
+        this.employeeRepository = employeeRepository;
     }
 
     public List<Employee> getAllEmployees(){
-        return employeeDao.findAll();
+        return employeeRepository.findAll();
     }
 
-    public Optional<Employee> getEmployeeById(int id){
-        return employeeDao.findById(id);
+    public Optional<Employee> getEmployeeById(Long id){
+        return employeeRepository.findById(id);
     }
 
-    public int addEmployee(Employee employee){
-        return employeeDao.addEmployee(employee);
+    public void addEmployee(String name, String role){
+        Employee employee = new Employee(name, role);
+        employeeRepository.save(employee);
     }
-    public int deleteEmployee(int id){
-        return employeeDao.deleteEmployee(id);
+    public void deleteEmployee(Long id){
+        employeeRepository.deleteById(id);
     }
 
 
