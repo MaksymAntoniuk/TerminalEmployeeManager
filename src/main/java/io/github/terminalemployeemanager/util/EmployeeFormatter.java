@@ -1,7 +1,5 @@
 package io.github.terminalemployeemanager.util;
-
-import io.github.terminalemployeemanager.Model.Employee;
-
+import io.github.terminalemployeemanager.entity.Employee;
 import java.util.List;
 
 public class EmployeeFormatter {
