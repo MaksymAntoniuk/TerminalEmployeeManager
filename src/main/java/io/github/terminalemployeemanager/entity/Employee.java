@@ -24,6 +24,10 @@ public class Employee {
         this.role = role;
     }
 
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+    private InfoEmployee infoEmployee;
+
+
     @Override
     public String toString() {
         return "Employee{" +
