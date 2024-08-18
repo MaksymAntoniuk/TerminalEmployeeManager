@@ -1,8 +1,11 @@
 package io.github.terminalemployeemanager;
 
-import io.github.terminalemployeemanager.Model.Employee;
+import io.github.terminalemployeemanager.entity.Employee;
+import io.github.terminalemployeemanager.entity.InfoEmployee;
 import io.github.terminalemployeemanager.service.EmployeeService;
+import io.github.terminalemployeemanager.service.InfoService;
 import io.github.terminalemployeemanager.util.EmployeeFormatter;
+import io.github.terminalemployeemanager.util.InfoEmployeeFormatter;
 import io.github.terminalemployeemanager.util.MenuApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +23,8 @@ public class Main {
 
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+    private InfoService infoService;
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Main.class, args);
@@ -43,7 +48,7 @@ public class Main {
                         break;
                     case 2:
                         System.out.print("Enter employee ID: ");
-                        Long id = scanner.nextLong();
+                        long id = scanner.nextLong();
                         Optional<Employee> employee = employeeService.getEmployeeById(id);
                         if (employee.isPresent()) {
                             System.out.println(employee.get());
@@ -66,6 +71,25 @@ public class Main {
                         System.out.println("Employee with " + id + " successfully deleted.");
                         break;
                     case 5:
+                        System.out.print("Enter employee ID: ");
+                        id = scanner.nextLong();
+                        scanner.nextLine();
+
+                        System.out.print("Enter employee email: ");
+                        String email = scanner.nextLine();
+
+                        System.out.print("Employee phone: ");
+                        String phone = scanner.nextLine();
+
+                        infoService.addInfoEmployee(id, email, phone);
+                        System.out.println("Employee information successfully added.");
+                        break;
+
+                    case 6:
+                        InfoEmployeeFormatter.printInfoEmployee(infoService.getAll());
+                        break;
+
+                    case 7:
                         System.out.println("Exiting...");
                         scanner.close();
                         System.exit(0);
