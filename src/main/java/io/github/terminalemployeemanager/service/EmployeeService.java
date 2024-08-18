@@ -1,6 +1,6 @@
 package io.github.terminalemployeemanager.service;
 
-import io.github.terminalemployeemanager.Model.Employee;
+import io.github.terminalemployeemanager.entity.Employee;
 import io.github.terminalemployeemanager.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
