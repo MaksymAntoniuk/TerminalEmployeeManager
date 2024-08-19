@@ -1,7 +1,6 @@
 package io.github.terminalemployeemanager;
 
 import io.github.terminalemployeemanager.entity.Employee;
-import io.github.terminalemployeemanager.entity.InfoEmployee;
 import io.github.terminalemployeemanager.service.EmployeeService;
 import io.github.terminalemployeemanager.service.InfoService;
 import io.github.terminalemployeemanager.util.EmployeeFormatter;
