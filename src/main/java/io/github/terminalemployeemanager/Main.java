@@ -67,23 +67,7 @@ import java.util.Scanner;
 
                         }
                     }
-                    String name = scanner.next().toString();
-                    System.out.print("Role: ");
-                    String role = scanner.next().toString();
-                    Employee employee1 = new Employee(name, role);
-                    employeeService.addEmployee(employee1);
-                    break;
-                case 4:
-                    System.out.println("Enter employee ID: ");
-                    id = scanner.nextInt();
-                    employeeService.deleteEmployee(id);
-                    System.out.println("Employee with " + id + " successfully deleted.");
-                    break;
-                case 5:
-                    System.out.println("Exiting...");
-                    scanner.close();
-                    System.exit(0);
-                    break;
+                    
                 default:
                     System.out.println("Invalid choice, please try again.");
             }
