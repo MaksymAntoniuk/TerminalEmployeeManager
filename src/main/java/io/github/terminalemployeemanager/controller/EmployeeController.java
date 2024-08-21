@@ -1,6 +1,5 @@
 package io.github.terminalemployeemanager.controller;
 
-import com.fasterxml.jackson.databind.node.JsonNodeCreator;
 import io.github.terminalemployeemanager.entity.Employee;
 import io.github.terminalemployeemanager.service.EmployeeService;
 import io.github.terminalemployeemanager.service.WordExportService;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employee")
@@ -29,6 +29,10 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Employee>> showEmployeeById(@PathVariable Long id) {
+        return ResponseEntity.ok(employeeService.getEmployeeById(id));
+    }
 
     @GetMapping("/export")
     public ResponseEntity<byte[]> exportEmployeesToWords() throws IOException {
