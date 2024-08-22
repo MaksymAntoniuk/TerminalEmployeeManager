@@ -28,7 +28,7 @@ public class Main {
                                         break;
                                     case 2:
                                         System.out.print("Enter employee ID: ");
-                                        int id = scanner.nextInt();
+                                        long id = scanner.nextLong();
                                         Optional<Employee> employee = employeeService.getEmployeeById(id);
                                         List<Employee> employeeArrayList = new ArrayList<>();
                                         employee.ifPresent(employeeArrayList::add);
