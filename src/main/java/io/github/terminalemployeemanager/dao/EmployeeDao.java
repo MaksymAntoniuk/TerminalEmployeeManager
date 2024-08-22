@@ -20,8 +20,9 @@ public class EmployeeDao {
     private final JdbcTemplate jdbcTemplate;
     private final Employee employee;
 
-    public EmployeeDao(JdbcTemplate jdbcTemplate) {
+    public EmployeeDao(JdbcTemplate jdbcTemplate, Employee employee) {
         this.jdbcTemplate = jdbcTemplate;
+        this.employee = employee;
     }
 
     public List<Employee> findAll(){
@@ -59,7 +60,7 @@ public class EmployeeDao {
         @Override
         public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
             Employee employee = new Employee();
-            employee.setId(rs.getInt("id"));
+            employee.setId(rs.getLong("id"));
             employee.setName(rs.getString("name"));
             employee.setRole(rs.getString("role"));
             return employee;
