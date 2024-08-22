@@ -59,13 +59,4 @@ public class Main {
 
                         }
                     }
-                    
-                default:
-                    System.out.println("Invalid choice, please try again.");
-            }
 
-
-        }
-
-    }
-}
