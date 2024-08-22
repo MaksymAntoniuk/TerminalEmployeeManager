@@ -22,14 +22,14 @@ public class EmployeeService {
         return employeeDao.findAll();
     }
 
-    public Optional<Employee> getEmployeeById(int id){
+    public Optional<Employee> getEmployeeById(Long id){
         return employeeDao.findById(id);
     }
 
     public int addEmployee(String name, String role){
         return employeeDao.addEmployee(name, role);
     }
-    public int deleteEmployee(int id){
+    public int deleteEmployee(Long id){
         return employeeDao.deleteEmployee(id);
     }
 
