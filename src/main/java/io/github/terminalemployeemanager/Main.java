@@ -2,6 +2,7 @@ package io.github.terminalemployeemanager;
 
 import io.github.terminalemployeemanager.model.Employee;
 import io.github.terminalemployeemanager.service.EmployeeService;
+import io.github.terminalemployeemanager.util.EmployeeFormatter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import java.util.Optional;
@@ -31,22 +32,24 @@ public class Main {
                                         } else {
                                             System.out.println("Employee not found!");
                                         }
+                                        System.out.println();
                                         break;
                                     case 3:
                                         System.out.print("Name: ");
-                                        String name = scanner.next().toString();
+                                        String name = scanner.next();
                                         System.out.print("Role: ");
-                                        String role = scanner.next().toString();
+                                        String role = scanner.next();
                                         employeeService.addEmployee(name, role);
                                         System.out.println("Employee with successfully added.");
                                         System.out.println();
 
                                         break;
                                     case 4:
-                                        System.out.println("Enter employee ID: ");
+                                        System.out.print("Enter employee ID: ");
                                         id = scanner.nextInt();
                                         employeeService.deleteEmployee(id);
                                         System.out.println("Employee with " + id + " successfully deleted.");
+                                        System.out.println();
                                         break;
                                     case 5:
                                         System.out.println("Exiting...");
