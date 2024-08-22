@@ -4,8 +4,6 @@ import io.github.terminalemployeemanager.model.Employee;
 import io.github.terminalemployeemanager.service.EmployeeService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
