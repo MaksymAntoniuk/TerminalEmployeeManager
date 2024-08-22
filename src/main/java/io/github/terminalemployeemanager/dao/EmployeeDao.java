@@ -1,5 +1,5 @@
 package io.github.terminalemployeemanager.dao;
-import io.github.terminalemployeemanager.Model.Employee;
+import io.github.terminalemployeemanager.model.Employee;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.dao.EmptyResultDataAccessException;
