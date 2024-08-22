@@ -37,8 +37,7 @@ public class Main {
                                         String name = scanner.next().toString();
                                         System.out.print("Role: ");
                                         String role = scanner.next().toString();
-                                        Employee employee1 = new Employee(name, role);
-                                        employeeService.addEmployee(employee1);
+                                        employeeService.addEmployee(name, role);
                                         break;
                                     case 4:
                                         System.out.println("Enter employee ID: ");
