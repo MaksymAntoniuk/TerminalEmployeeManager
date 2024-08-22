@@ -30,7 +30,7 @@ public class EmployeeDao {
                 new EmployeeRowMapper());
     }
 
-    public Optional<Employee> findById(int id){
+    public Optional<Employee> findById(Long id){
         try{
             Employee employee = jdbcTemplate.queryForObject(
                     "SELECT * FROM employees WHERE id = ?",
@@ -51,7 +51,7 @@ public class EmployeeDao {
         return jdbcTemplate.update(query, employee.getName(),employee.getRole());
     }
 
-    public int deleteEmployee(int id){
+    public int deleteEmployee(Long id){
         String query = "DELETE FROM employees WHERE id = ?";
         return jdbcTemplate.update(query, id);
     }
