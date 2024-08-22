@@ -23,7 +23,8 @@ public class Main {
 
                                 switch (choice){
                                     case 1:
-                                        employeeService.getAllEmployees().forEach(System.out::println);
+                                        EmployeeFormatter.printEmployeeList(employeeService.getAllEmployees());
+                                        System.out.println();
                                         break;
                                     case 2:
                                         System.out.print("Enter employee ID: ");
