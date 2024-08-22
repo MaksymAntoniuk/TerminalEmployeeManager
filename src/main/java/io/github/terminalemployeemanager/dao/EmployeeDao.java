@@ -56,7 +56,7 @@ public class EmployeeDao {
         return jdbcTemplate.update(query, id);
     }
 
-    public class EmployeeRowMapper implements RowMapper<Employee> {
+    public static class EmployeeRowMapper implements RowMapper<Employee> {
         @Override
         public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
             Employee employee = new Employee();
