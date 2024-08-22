@@ -18,6 +18,7 @@ import java.util.Optional;
 public class EmployeeDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final Employee employee;
 
     public EmployeeDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
