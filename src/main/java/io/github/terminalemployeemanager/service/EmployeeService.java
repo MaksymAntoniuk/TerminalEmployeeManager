@@ -1,6 +1,6 @@
 package io.github.terminalemployeemanager.service;
 
-import io.github.terminalemployeemanager.Model.Employee;
+import io.github.terminalemployeemanager.model.Employee;
 import io.github.terminalemployeemanager.dao.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,13 +26,12 @@ public class EmployeeService {
         return employeeDao.findById(id);
     }
 
-    public int addEmployee(Employee employee){
-        return employeeDao.addEmployee(employee);
+    public int addEmployee(String name, String role){
+        return employeeDao.addEmployee(name, role);
     }
     public int deleteEmployee(int id){
         return employeeDao.deleteEmployee(id);
     }
-
 
 
 }
