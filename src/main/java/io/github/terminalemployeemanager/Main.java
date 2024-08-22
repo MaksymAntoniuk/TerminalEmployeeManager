@@ -27,8 +27,11 @@ public class Main {
                                         System.out.print("Enter employee ID: ");
                                         int id = scanner.nextInt();
                                         Optional<Employee> employee = employeeService.getEmployeeById(id);
-                                        if (employee != null){
-                                            System.out.println(employee);
+                                        List<Employee> employeeArrayList = new ArrayList<>();
+                                        employee.ifPresent(employeeArrayList::add);
+
+                                        if (employee.isPresent()){
+                                            EmployeeFormatter.printEmployeeList(employeeArrayList);
                                         } else {
                                             System.out.println("Employee not found!");
                                         }
