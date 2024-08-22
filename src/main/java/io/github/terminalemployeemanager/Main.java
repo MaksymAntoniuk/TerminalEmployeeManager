@@ -9,20 +9,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-                    public class Main {
+import static io.github.terminalemployeemanager.util.MenuApp.showMenu;
+public class Main {
                         public static void main(String[] args) {
                             ApplicationContext context = new AnnotationConfigApplicationContext("io.github.terminalemployeemanager");
                             EmployeeService employeeService = context.getBean(EmployeeService.class);
 
                             Scanner scanner = new Scanner(System.in);
                             while (true){
-                                System.out.print("""
-                    1. List all employees
-                    2. Find employee by ID
-                    3. Add new employee
-                    4. Delete employee
-                    Enter your choice: 
-                    """);
+                                showMenu();
                                 int choice = scanner.nextInt();
 
                                 switch (choice){
