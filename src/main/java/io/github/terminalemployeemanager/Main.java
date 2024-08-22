@@ -1,6 +1,6 @@
 package io.github.terminalemployeemanager;
 
-import io.github.terminalemployeemanager.Model.Employee;
+import io.github.terminalemployeemanager.model.Employee;
 import io.github.terminalemployeemanager.service.EmployeeService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
