@@ -1,7 +1,4 @@
 package io.github.terminalemployeemanager.config;
-
-
-import com.zaxxer.hikari.util.DriverDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
