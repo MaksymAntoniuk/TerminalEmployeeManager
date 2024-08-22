@@ -38,6 +38,9 @@ public class Main {
                                         System.out.print("Role: ");
                                         String role = scanner.next().toString();
                                         employeeService.addEmployee(name, role);
+                                        System.out.println("Employee with successfully added.");
+                                        System.out.println();
+
                                         break;
                                     case 4:
                                         System.out.println("Enter employee ID: ");
