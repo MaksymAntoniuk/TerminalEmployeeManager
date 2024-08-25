@@ -20,16 +20,17 @@ Add data information about an employee to another table which will contain these
 ## Database Setup
 - Install and set up MySQL on your local machine.
 - Create a database named `employees_spring`.
-  - Create a table named `employees` with the following schema:
-`          CREATE TABLE employees (
-              id INT AUTO_INCREMENT PRIMARY KEY,
-              name VARCHAR(255),
-              role VARCHAR(255)
-          );`
+- Create a table named `employees` with the following schema:
+    `CREATE TABLE employees (
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          name VARCHAR(255),
+          role VARCHAR(255)
+    );
+    `
 - Update your database credentials in the AppConfig.java file:
-`     dataSource.setUrl("jdbc:mysql://localhost:3306/employees_spring");
-      dataSource.setUsername("your_username");
-      dataSource.setPassword("your_password");`
+      `dataSource.setUrl("jdbc:mysql://localhost:3306/employees_spring");
+       dataSource.setUsername("your_username");
+       dataSource.setPassword("your_password");`
   
 ## Input('main' branch)
 After run of application in the terminal appear:
