@@ -123,3 +123,145 @@ Option 5: Exits the application.
            5. Exit
               Enter your choice: 5
               Exiting...
+
+## Features for `migrate-to-jpa` branch
+- List of all employees
+- Find employee by ID
+- Add new employee
+- Delete employee
+- Add info for employee by ID
+- List of all information about employees
+- Exit
+
+This branch is similar to 'main' but has new feature and uses another technology to manage a database.
+Refactor EmployeeDao to EmployeeRepository using JPA.
+A new feature allows users to add employee information to the database and list all-employees information a table.
+
+# Changes
+- Replaced the `JdbcTemplate` with a `JpaRepository`.
+- Updated all data access methods to use JPA's features instead of direct SQL queries.
+- Modified entity mappings in `Employee` to support JPA annotations.
+- Update connection to a database by using configuring connection details in `application.properties`
+
+# Setup `application.properties` for connection to a database
+    spring.datasource.url= link_to_database(example: jdbc:mysql://localhost:3306/name_database)
+    spring.datasource.username=username_databse
+    spring.datasource.password=password_database
+
+# Add new table to a database 
+All database tables are now automatically generated using JPA annotations,
+with each table's structure defined in the entity package.
+
+# Input(`migrate-to-jpa` branch)
+After running the application in the terminal:
+1. List all employees
+2. Find employee by ID
+3. Add new employee
+4. Delete employee
+5. Add info for employee by ID
+6. List of all information about employees
+7. Exit
+
+Option 1: Lists all employees in the database.
+Option 2: Prompts for an employee ID and displays the corresponding employee's details if found.
+Option 3: Prompts for a name and role, then adds the new employee to the database.
+Option 4: Prompts for an employee ID and deletes the corresponding employee from the database.
+Option 5: Prompts for an employee ID and allows the user to add additional information (email and phone) to the employee record.
+Option 6: Lists all available information about employees in the database.
+Option 7: Exits the application.
+
+       1. List all employees
+       2. Find employee by ID
+       3. Add new employee
+       4. Delete employee
+       5. Add info for employee by ID
+       6. List of all information about employees
+       7. Exit
+          Enter your choice: 1
+    
+    ID    Name       Role
+    --------------------------
+    4     Maksym     developer      
+    5     Eva        Designer       
+    6     Richard    Manager        
+    7     Don        Tester
+    
+       1. List all employees
+       2. Find employee by ID
+       3. Add new employee
+       4. Delete employee
+       5. Add info for employee by ID
+       6. List of all information about employees
+       7. Exit
+          Enter your choice: 2
+          Enter employee ID: 5
+    
+    ID    Name       Role
+    --------------------------
+    5     Eva        Designer
+    
+       1. List all employees
+       2. Find employee by ID
+       3. Add new employee
+       4. Delete employee
+       5. Add info for employee by ID
+       6. List of all information about employees
+       7. Exit
+          Enter your choice: 3
+          Name: Bob
+          Role: Admin
+          Employee successfully added.
+    
+       1. List all employees
+       2. Find employee by ID
+       3. Add new employee
+       4. Delete employee
+       5. Add info for employee by ID
+       6. List of all information about employees
+       7. Exit
+          Enter your choice: 1
+    
+    ID    Name       Role
+    --------------------------
+    4     Maksym     developer      
+    5     Eva        Designer       
+    6     Richard    Manager        
+    7     Don        Tester         
+    11    Bob        Admin
+    
+       1. List all employees
+       2. Find employee by ID
+       3. Add new employee
+       4. Delete employee
+       5. Add info for employee by ID
+       6. List of all information about employees
+       7. Exit
+          Enter your choice: 4
+          Enter employee ID: 11
+          Employee with ID 11 successfully deleted.
+    
+       1. List all employees
+       2. Find employee by ID
+       3. Add new employee
+       4. Delete employee
+       5. Add info for employee by ID
+       6. List of all information about employees
+       7. Exit
+          Enter your choice: 1
+    
+    ID    Name       Role
+    --------------------------
+    4     Maksym     developer      
+    5     Eva        Designer       
+    6     Richard    Manager        
+    7     Don        Tester
+    
+       1. List all employees
+       2. Find employee by ID
+       3. Add new employee
+       4. Delete employee
+       5. Add info for employee by ID
+       6. List of all information about employees
+       7. Exit
+          Enter your choice: 5
+          Exiting...
