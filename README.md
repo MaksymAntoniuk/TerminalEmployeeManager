@@ -1,4 +1,4 @@
-# Terminal Employee Manager
+**# Terminal Employee Manager**
 A Spring-based console application to manage employee records in a MySQL database. This application allows users to view all employees, find an employee by ID, add new employees, delete employees and 
 Add data information about an employee to another table which will contain these data. These features can be depended on from branch, every branch will contain more new features in the future (all descriptions will be in this file).
 
@@ -126,7 +126,7 @@ After run of application in the terminal appear:
               Enter your choice: 5
               Exiting...
 
-# Features for `migrate-to-jpa` branch
+**# Features for `migrate-to-jpa` branch**
 - List of all employees
 - Find employee by ID
 - Add new employee
@@ -268,3 +268,40 @@ After running the application in the terminal:
        7. Exit
           Enter your choice: 5
           Exiting...
+
+**# Features for `new-feature-write-data-to-document` branch**
+This version implements a new feature that uses REST API endpoints defined in the controller package. Users can now
+download a Word document containing all employee data from the database, can get JSON with data from a database for employee by ID.
+
+## Setup `application.properties` for connection to a database
+    spring.datasource.url= link_to_database(example: jdbc:mysql://localhost:3306/name_database)
+    spring.datasource.username=username_databse
+    spring.datasource.password=password_database
+
+
+## How to download Word with data
+You need to have Web Browser and then in the search fields you need to write
+        `http://localhost:number_port(8080)/api/employee/export`
+
+Spring in default settings always use port 8080.
+Can be a problem with `server.port` it can be busy by another application then you need
+to change number port in `application.properties`.
+        `server.port=number_port`
+
+## To get JSON for employee by ID
+In the search fields of Web Browser you need to write
+        `http://localhost:number_port(8080)/api/employee/id_employee`
+Spring in default settings always use port 8080.
+Can be a problem with `server.port` it can be busy by another application then you need
+to change number port in `application.properties`.
+`server.port=number_port` 
+
+## Example for get JSON
+Input in the fields of Web Browser
+
+    `http://localhost:8080/api/employee/4`
+
+Output 
+
+
+    
