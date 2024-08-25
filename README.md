@@ -2,7 +2,7 @@
 A Spring-based console application to manage employee records in a MySQL database. This application allows users to view all employees, find an employee by ID, add new employees, delete employees and 
 Add data information about an employee to another table which will contain these data. These features can be depended on from branch, every branch will contain more new features in the future (all descriptions will be in this file).
 
-# Technologies Used
+## Technologies Used
 - **Java 17**: Core programming language.
 - **Spring Framework**: Used for dependency injection, JDBC template, and application configuration.
 - **Spring Boot**: Simplifies the configuration of the Spring application.
@@ -17,7 +17,7 @@ Add data information about an employee to another table which will contain these
 - Delete employee
 - Exit
 
-# Database Setup
+## Database Setup
 - Install and set up MySQL on your local machine.
 - Create a database named `employees_spring`.
 - Create a table named `employees` with the following schema:
@@ -31,7 +31,7 @@ Add data information about an employee to another table which will contain these
       dataSource.setUsername("your_username");
       dataSource.setPassword("your_password");
   
-# Input('main' branch)
+## Input('main' branch)
 After run of application in the terminal appear:
 1. List all employees
 2. Find employee by ID
@@ -45,7 +45,7 @@ Option 3: Prompts for a name and role, then adds the new employee to the databas
 Option 4: Prompts for an employee ID and deletes the corresponding employee from the database.
 Option 5: Exits the application.
 
-# Example
+## Example
            1. List all employees
            2. Find employee by ID
            3. Add new employee
@@ -124,7 +124,7 @@ Option 5: Exits the application.
               Enter your choice: 5
               Exiting...
 
-## Features for `migrate-to-jpa` branch
+# Features for `migrate-to-jpa` branch
 - List of all employees
 - Find employee by ID
 - Add new employee
@@ -137,22 +137,22 @@ This branch is similar to 'main' but has new feature and uses another technology
 Refactor EmployeeDao to EmployeeRepository using JPA.
 A new feature allows users to add employee information to the database and list all-employees information a table.
 
-# Changes
+## Changes
 - Replaced the `JdbcTemplate` with a `JpaRepository`.
 - Updated all data access methods to use JPA's features instead of direct SQL queries.
 - Modified entity mappings in `Employee` to support JPA annotations.
 - Update connection to a database by using configuring connection details in `application.properties`
 
-# Setup `application.properties` for connection to a database
+## Setup `application.properties` for connection to a database
     spring.datasource.url= link_to_database(example: jdbc:mysql://localhost:3306/name_database)
     spring.datasource.username=username_databse
     spring.datasource.password=password_database
 
-# Add new table to a database 
+## Add new table to a database 
 All database tables are now automatically generated using JPA annotations,
 with each table's structure defined in the entity package.
 
-# Input(`migrate-to-jpa` branch)
+## Input(`migrate-to-jpa` branch)
 After running the application in the terminal:
 1. List all employees
 2. Find employee by ID
@@ -170,6 +170,7 @@ Option 5: Prompts for an employee ID and allows the user to add additional infor
 Option 6: Lists all available information about employees in the database.
 Option 7: Exits the application.
 
+## Example
        1. List all employees
        2. Find employee by ID
        3. Add new employee
