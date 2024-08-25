@@ -301,7 +301,23 @@ Input in the fields of Web Browser
 
     `http://localhost:8080/api/employee/4`
 
-Output 
+Output
+    `{"id":3,"name":"Joshua","role":"Administrator"}
+`
 
+## Example for download 
+Input in the fields of Web Browser
 
-    
+    `http://localhost:8080/api/employee/export`
+
+Output in the Word Document
+
+        `Empoyee List
+        ID: 1
+        Name: Maksym
+        Role: Java Dev
+        
+        
+        ID: 3
+        Name: Joshua
+        Role: Administrator`
