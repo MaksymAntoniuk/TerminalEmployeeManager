@@ -21,12 +21,13 @@ Add data information about an employee to another table which will contain these
 - Install and set up MySQL on your local machine.
 - Create a database named `employees_spring`.
 - Create a table named `employees` with the following schema:
+
     `CREATE TABLE employees (
           id INT AUTO_INCREMENT PRIMARY KEY,
           name VARCHAR(255),
           role VARCHAR(255)
-    );
-    `
+    );`
+
 - Update your database credentials in the AppConfig.java file:
       `dataSource.setUrl("jdbc:mysql://localhost:3306/employees_spring");
        dataSource.setUsername("your_username");
@@ -40,11 +41,11 @@ After run of application in the terminal appear:
 4. Delete employee
 5. Exit
 
-Option 1: Lists all employees in the database.
-Option 2: Prompts for an employee ID and displays the corresponding employee's details if found.
-Option 3: Prompts for a name and role, then adds the new employee to the database.
-Option 4: Prompts for an employee ID and deletes the corresponding employee from the database.
-Option 5: Exits the application.
+* Option 1: Lists all employees in the database.
+* Option 2: Prompts for an employee ID and displays the corresponding employee's details if found.
+* Option 3: Prompts for a name and role, then adds the new employee to the database.
+* Option 4: Prompts for an employee ID and deletes the corresponding employee from the database.
+* Option 5: Exits the application.
 
 ## Example
            1. List all employees
@@ -163,13 +164,13 @@ After running the application in the terminal:
 6. List of all information about employees
 7. Exit
 
-Option 1: Lists all employees in the database.
-Option 2: Prompts for an employee ID and displays the corresponding employee's details if found.
-Option 3: Prompts for a name and role, then adds the new employee to the database.
-Option 4: Prompts for an employee ID and deletes the corresponding employee from the database.
-Option 5: Prompts for an employee ID and allows the user to add additional information (email and phone) to the employee record.
-Option 6: Lists all available information about employees in the database.
-Option 7: Exits the application.
+* Option 1: Lists all employees in the database.
+* Option 2: Prompts for an employee ID and displays the corresponding employee's details if found.
+* Option 3: Prompts for a name and role, then adds the new employee to the database.
+* Option 4: Prompts for an employee ID and deletes the corresponding employee from the database.
+* Option 5: Prompts for an employee ID and allows the user to add additional information (email and phone) to the employee record.
+* Option 6: Lists all available information about employees in the database.
+* Option 7: Exits the application.
 
 ## Example
        1. List all employees
