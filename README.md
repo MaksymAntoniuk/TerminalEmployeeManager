@@ -46,7 +46,7 @@ Option 4: Prompts for an employee ID and deletes the corresponding employee from
 Option 5: Exits the application.
 
 # Example
-        1. List all employees
+           1. List all employees
            2. Find employee by ID
            3. Add new employee
            4. Delete employee
@@ -59,7 +59,7 @@ Option 5: Exits the application.
         6     Richard              menager        
         7     Don                  tester
         
-        1. List all employees
+           1. List all employees
            2. Find employee by ID
            3. Add new employee
            4. Delete employee
@@ -70,7 +70,7 @@ Option 5: Exits the application.
         ----------------------------------------
         5     Eva                  Designer
         
-        1. List all employees
+           1. List all employees
            2. Find employee by ID
            3. Add new employee
            4. Delete employee
@@ -94,7 +94,7 @@ Option 5: Exits the application.
         7     Don                  tester         
         11    Bob                  admin
         
-        1. List all employees
+           1. List all employees
            2. Find employee by ID
            3. Add new employee
            4. Delete employee
