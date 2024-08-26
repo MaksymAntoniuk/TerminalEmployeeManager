@@ -23,7 +23,11 @@ public class EmployeeService {
     }
 
     public Optional<Employee> getEmployeeById(Long id){
-        return employeeRepository.findById(id);
+        if (employeeRepository.existsById(id)) {
+            return employeeRepository.findById(id);
+        } else {
+            return Optional.empty();
+        }
     }
 
 //    public void addEmployee(String name, String role){
