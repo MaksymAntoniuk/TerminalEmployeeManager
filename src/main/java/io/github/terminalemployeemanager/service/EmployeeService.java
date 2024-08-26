@@ -26,8 +26,11 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
-    public void addEmployee(String name, String role){
-        Employee employee = new Employee(name, role);
+//    public void addEmployee(String name, String role){
+//        Employee employee = new Employee(name, role);
+//        employeeRepository.save(employee);
+//    }
+    public void addEmployee(Employee employee){
         employeeRepository.save(employee);
     }
     public void deleteEmployee(Long id){
