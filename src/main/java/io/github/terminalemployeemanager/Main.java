@@ -50,7 +50,8 @@ public class Main {
                         long id = scanner.nextLong();
                         Optional<Employee> employee = employeeService.getEmployeeById(id);
                         if (employee.isPresent()) {
-                            System.out.println(employee.get());
+//                            System.out.println(employee.get());
+                            EmployeeFormatter.printEmployeeList(employee.stream().toList());
                         } else {
                             System.out.println("Employee not found!");
                         }
