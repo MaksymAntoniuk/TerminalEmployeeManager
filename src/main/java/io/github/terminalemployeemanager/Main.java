@@ -61,7 +61,7 @@ public class Main {
                         String name = scanner.nextLine();
                         System.out.print("Role: ");
                         String role = scanner.nextLine();
-                        employeeService.addEmployee(name, role);
+                        employeeService.addEmployee(new Employee(name, role));
                         System.out.println("Employee successfully added.");
                         break;
                     case 4:
