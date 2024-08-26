@@ -34,6 +34,12 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.getEmployeeById(id));
     }
 
+    @PostMapping("/addEmployee")
+    public String addEmployee(@RequestBody Employee employee) {
+        employeeService.addEmployee(employee);
+        return "Employee added successfully";
+    }
+
     @GetMapping("/export")
     public ResponseEntity<byte[]> exportEmployeesToWords() throws IOException {
         byte[] document = wordExportService.generateEmployeeWordDocument();
