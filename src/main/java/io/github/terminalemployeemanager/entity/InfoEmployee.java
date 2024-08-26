@@ -1,5 +1,6 @@
 package io.github.terminalemployeemanager.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -17,7 +18,8 @@ public class InfoEmployee {
     private String phone;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id",referencedColumnName = "id", nullable = false)
+    @JsonIgnore
+    @JoinColumn(name = "employee_id", referencedColumnName = "id", nullable = false)
     private Employee employee;
 
     @Override
