@@ -1,6 +1,5 @@
 package io.github.terminalemployeemanager.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,8 +24,7 @@ public class Employee {
         this.role = role;
     }
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, optional = true)
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
     private InfoEmployee infoEmployee;
 
 
