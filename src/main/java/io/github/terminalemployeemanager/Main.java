@@ -1,8 +1,10 @@
 package io.github.terminalemployeemanager;
 
 import io.github.terminalemployeemanager.entity.Employee;
+import io.github.terminalemployeemanager.service.AuthenticationService;
 import io.github.terminalemployeemanager.service.EmployeeService;
 import io.github.terminalemployeemanager.service.InfoService;
+import io.github.terminalemployeemanager.service.RegistrationService;
 import io.github.terminalemployeemanager.util.EmployeeFormatter;
 import io.github.terminalemployeemanager.util.InfoEmployeeFormatter;
 import io.github.terminalemployeemanager.util.MenuApp;
@@ -24,16 +26,84 @@ public class Main {
     private EmployeeService employeeService;
     @Autowired
     private InfoService infoService;
+    @Autowired
+    private RegistrationService registrationService;
+    @Autowired
+    private AuthenticationService authenticationService;
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Main.class, args);
-
         Main app = context.getBean(Main.class);
         app.runApplication();
     }
 
     public void runApplication() {
         Scanner scanner = new Scanner(System.in);
+
+        boolean isAuthenticated = authenticateUser(scanner);
+
+        if (isAuthenticated) {
+            runMenu(scanner);
+        } else {
+            System.out.println("Authentication failed. Exiting the application.");
+        }
+    }
+
+    private boolean authenticateUser(Scanner scanner) {
+        System.out.println("Choose an option:");
+        System.out.println("1. Sign in");
+        System.out.println("2. Sign up");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();  // Consume newline
+
+        if (choice == 1) {
+            return signIn(scanner);
+        } else if (choice == 2) {
+            signUp(scanner);
+            return signIn(scanner);  // Allow the user to sign in after signing up
+        } else {
+            System.out.println("Invalid choice.");
+            return false;
+        }
+    }
+
+    private boolean signIn(Scanner scanner) {
+        System.out.print("Enter email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        if (authenticationService.authenticate(email, password)) {
+            System.out.println("Login successful!");
+            return true;
+        } else {
+            System.out.println("Invalid email or password.");
+            return false;
+        }
+    }
+
+    private void signUp(Scanner scanner) {
+        System.out.println("Sign up for a new account:");
+
+        System.out.print("Email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("First Name: ");
+        String firstName = scanner.nextLine();
+
+        System.out.print("Last Name: ");
+        String lastName = scanner.nextLine();
+
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
+
+       authenticationService.register(email, firstName, lastName, password);
+       System.out.println("Sign up successful! Please sign in to continue.");
+    }
+
+    private void runMenu(Scanner scanner) {
         while (true) {
             try {
                 MenuApp.showMenu();
@@ -46,47 +116,20 @@ public class Main {
                         System.out.println();
                         break;
                     case 2:
-                        System.out.print("Enter employee ID: ");
-                        long id = scanner.nextLong();
-                        Optional<Employee> employee = employeeService.getEmployeeById(id);
-                        if (employee.isPresent()) {
-                            EmployeeFormatter.printEmployeeList(employee.stream().toList());
-                        } else {
-                            System.out.println("Employee not found!");
-                        }
+                        findEmployeeById(scanner);
                         break;
                     case 3:
-                        System.out.print("Name: ");
-                        String name = scanner.nextLine();
-                        System.out.print("Role: ");
-                        String role = scanner.nextLine();
-                        employeeService.addEmployee(new Employee(name, role));
-                        System.out.println("Employee successfully added.");
+                        addNewEmployee(scanner);
                         break;
                     case 4:
-                        System.out.print("Enter employee ID: ");
-                        id = scanner.nextLong();
-                        employeeService.deleteEmployee(id);
+                        deleteEmployee(scanner);
                         break;
                     case 5:
-                        System.out.print("Enter employee ID: ");
-                        id = scanner.nextLong();
-                        scanner.nextLine();
-
-                        System.out.print("Enter employee email: ");
-                        String email = scanner.nextLine();
-
-                        System.out.print("Employee phone: ");
-                        String phone = scanner.nextLine();
-
-                        infoService.addInfoEmployee(id, email, phone);
-                        System.out.println("Employee information successfully added.");
+                        addEmployeeInfo(scanner);
                         break;
-
                     case 6:
                         InfoEmployeeFormatter.printInfoEmployee(infoService.getAll());
                         break;
-
                     case 7:
                         System.out.println("Exiting...");
                         scanner.close();
@@ -98,8 +141,51 @@ public class Main {
 
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
-                scanner.nextLine();
+                scanner.nextLine();  // Clear invalid input
             }
         }
     }
+
+    private void findEmployeeById(Scanner scanner) {
+        System.out.print("Enter employee ID: ");
+        long id = scanner.nextLong();
+        Optional<Employee> employee = employeeService.getEmployeeById(id);
+        if (employee.isPresent()) {
+            EmployeeFormatter.printEmployeeList(employee.stream().toList());
+        } else {
+            System.out.println("Employee not found!");
+        }
+    }
+
+    private void addNewEmployee(Scanner scanner) {
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Role: ");
+        String role = scanner.nextLine();
+        employeeService.addEmployee(new Employee(name, role));
+        System.out.println("Employee successfully added.");
+    }
+
+    private void deleteEmployee(Scanner scanner) {
+        System.out.print("Enter employee ID: ");
+        long id = scanner.nextLong();
+        employeeService.deleteEmployee(id);
+        System.out.println("Employee with ID " + id + " successfully deleted.");
+    }
+
+    private void addEmployeeInfo(Scanner scanner) {
+        System.out.print("Enter employee ID: ");
+        long id = scanner.nextLong();
+        scanner.nextLine();
+
+        System.out.print("Enter employee email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Enter employee phone: ");
+        String phone = scanner.nextLine();
+
+        infoService.addInfoEmployee(id, email, phone);
+        System.out.println("Employee information successfully added.");
+    }
+
 }
