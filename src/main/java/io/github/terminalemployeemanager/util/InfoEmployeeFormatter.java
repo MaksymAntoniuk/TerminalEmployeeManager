@@ -10,11 +10,13 @@ public class InfoEmployeeFormatter {
             System.out.println("No employees found.");
             return;
         }
+        System.out.println();
 
         System.out.printf("%-5s %-30s %-30s %-15s%n", "ID", "Email", "Phone", "Employee_ID");
         System.out.println("-----------------------------------------------------------------------------------");
         for (InfoEmployee employee : infoEmployees) {
             System.out.printf("%-5d %-30s %-30s %-15s%n", employee.getId(), employee.getEmail(), employee.getPhone(), employee.getEmployee().getId());
         }
+        System.out.println();
     }
 }
