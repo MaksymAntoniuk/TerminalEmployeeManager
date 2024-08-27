@@ -50,7 +50,6 @@ public class Main {
                         long id = scanner.nextLong();
                         Optional<Employee> employee = employeeService.getEmployeeById(id);
                         if (employee.isPresent()) {
-//                            System.out.println(employee.get());
                             EmployeeFormatter.printEmployeeList(employee.stream().toList());
                         } else {
                             System.out.println("Employee not found!");
@@ -68,7 +67,6 @@ public class Main {
                         System.out.print("Enter employee ID: ");
                         id = scanner.nextLong();
                         employeeService.deleteEmployee(id);
-                        System.out.println("Employee with " + id + " successfully deleted.");
                         break;
                     case 5:
                         System.out.print("Enter employee ID: ");
