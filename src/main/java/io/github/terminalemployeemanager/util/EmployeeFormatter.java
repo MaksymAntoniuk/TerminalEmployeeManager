@@ -4,11 +4,12 @@ import java.util.List;
 
 public class EmployeeFormatter {
     public static void printEmployeeList(List<Employee> employees) {
+        System.out.println();
         if (employees.isEmpty()) {
             System.out.println("No employees found.");
             return;
         }
-
+        System.out.println();
         System.out.printf("%-5s %-20s %-15s%n", "ID", "Name", "Role");
         System.out.println("----------------------------------------");
         for (Employee employee : employees) {
