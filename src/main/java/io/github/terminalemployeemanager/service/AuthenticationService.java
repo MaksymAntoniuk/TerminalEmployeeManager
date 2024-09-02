@@ -22,7 +22,7 @@ public class AuthenticationService {
         return registrationOptional.isPresent() && bcryptService.checkPasswordBcrypt(password, email);
     }
 
-    public void register(String email, String firstName, String lastName  ,String password) {
+    public void register(String email, String firstName, String lastName, String password) {
         String hash_password = bcryptService.bCryptPassword(password);
         registrationService.save(new Registration(email, firstName, lastName, hash_password));
     }
