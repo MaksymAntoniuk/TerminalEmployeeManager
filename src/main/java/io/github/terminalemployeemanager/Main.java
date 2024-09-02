@@ -50,10 +50,15 @@ public class Main {
     }
 
     private boolean authenticateUser(Scanner scanner) {
-        System.out.println("Choose an option:");
-        System.out.println("1. Sign in");
-        System.out.println("2. Sign up");
-
+        System.out.println("""
+                -----------------Welcome to the Terminal Employee Manager-----------------
+                Choose an option:
+                1. Sign in
+                2. Sign up""");
+//        System.out.println("Choose an option:");
+//        System.out.println("1. Sign in");
+//        System.out.println("2. Sign up");
+        System.out.print("Your choice: ");
         int choice = scanner.nextInt();
         scanner.nextLine();  // Consume newline
 
@@ -69,6 +74,7 @@ public class Main {
     }
 
     private boolean signIn(Scanner scanner) {
+        System.out.println("-----------------Sign in-----------------");
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
 
@@ -85,7 +91,7 @@ public class Main {
     }
 
     private void signUp(Scanner scanner) {
-        System.out.println("Sign up for a new account:");
+        System.out.println("-----------------Sign up for a new account-----------------");
 
         System.out.print("Email: ");
         String email = scanner.nextLine();
