@@ -24,9 +24,11 @@ public class Employee {
         this.role = role;
     }
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, optional = true, fetch = FetchType.LAZY)
     private InfoEmployee infoEmployee;
 
+    @OneToOne( mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Salary salary;
 
     @Override
     public String toString() {
