@@ -30,6 +30,8 @@ public class Main {
     private RegistrationService registrationService;
     @Autowired
     private AuthenticationService authenticationService;
+    @Autowired
+    private SalaryService salaryService;
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Main.class, args);
