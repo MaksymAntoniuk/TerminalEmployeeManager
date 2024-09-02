@@ -44,7 +44,7 @@ public class Main {
         if (isAuthenticated) {
             runMenu(scanner);
         } else {
-            System.out.println("Authentication failed. Exiting the application.");
+            System.out.print("Authentication failed. Exiting the application.");
         }
     }
 
