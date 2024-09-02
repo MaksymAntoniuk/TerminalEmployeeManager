@@ -1,22 +1,19 @@
 package io.github.terminalemployeemanager;
 
 import io.github.terminalemployeemanager.entity.Employee;
-import io.github.terminalemployeemanager.service.AuthenticationService;
-import io.github.terminalemployeemanager.service.EmployeeService;
-import io.github.terminalemployeemanager.service.InfoService;
-import io.github.terminalemployeemanager.service.RegistrationService;
+import io.github.terminalemployeemanager.service.*;
 import io.github.terminalemployeemanager.util.EmployeeFormatter;
 import io.github.terminalemployeemanager.util.InfoEmployeeFormatter;
 import io.github.terminalemployeemanager.util.MenuApp;
+import io.github.terminalemployeemanager.util.SalaryFormater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import java.util.InputMismatchException;
-import java.util.Optional;
-import java.util.Scanner;
+import java.math.BigDecimal;
+import java.util.*;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "io.github.terminalemployeemanager.repository")
@@ -139,6 +136,26 @@ public class Main {
                         InfoEmployeeFormatter.printInfoEmployee(infoService.getAll());
                         break;
                     case 7:
+                        addSalaryEmployee(scanner);
+//                        System.out.print("Enter employee ID: ");
+//                        Long id = scanner.nextLong();
+//                        System.out.print("Enter employee salary: ");
+//                        BigDecimal salary_amount = scanner.nextBigDecimal();
+//                        if (salary_amount.compareTo(new BigDecimal(2000)) < 0){
+//                            System.out.println("Salary must be equal to or greater than 2000");
+//                            break;
+//                        }
+////                        Optional<Employee> employee = employeeService.getEmployeeById(1L);
+//                        if (employeeService.getEmployeeById(id).isPresent()){
+//                            salaryService.addSalary(employeeService.getEmployeeById(id).get(), salary_amount);
+//                        }
+                        break;
+                    case 8:
+//                        List <Salary> salaryList = salaryService.getAllSalary();
+//                        System.out.println(salaryList);
+                        SalaryFormater.printSalaryList(salaryService.getAllSalary());
+                        break;
+                    case 9:
                         System.out.println("Exiting...");
                         scanner.close();
                         System.exit(0);
@@ -194,6 +211,21 @@ public class Main {
 
         infoService.addInfoEmployee(id, email, phone);
         System.out.println("Employee information successfully added.");
+    }
+
+    private void addSalaryEmployee(Scanner scanner){
+        System.out.print("Enter employee ID: ");
+        Long id = scanner.nextLong();
+        System.out.print("Enter employee salary: ");
+        BigDecimal salary_amount = scanner.nextBigDecimal();
+        if (salary_amount.compareTo(new BigDecimal(2000)) < 0){
+            System.out.println("Salary must be equal to or greater than 2000");
+            return;
+        }
+//                        Optional<Employee> employee = employeeService.getEmployeeById(1L);
+        if (employeeService.getEmployeeById(id).isPresent()){
+            salaryService.addSalary(employeeService.getEmployeeById(id).get(), salary_amount);
+        }
     }
 
 }
